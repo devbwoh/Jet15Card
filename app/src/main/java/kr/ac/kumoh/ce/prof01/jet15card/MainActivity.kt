@@ -4,12 +4,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -57,20 +64,28 @@ fun SongItem() {
             .fillMaxWidth(),
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
-        Row {
+        Row(
+            Modifier.height(IntrinsicSize.Min)
+        ) {
             Box(
                 Modifier.padding(8.dp).clip(CircleShape)
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_launcher_background),
-                    contentDescription = "노래 앨범 이미지"
+                    contentDescription = "노래 앨범 이미지",
+                    modifier = Modifier.size(100.dp)
                 )
                 Image(
                     painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                    contentDescription = "노래 앨범 이미지"
+                    contentDescription = "노래 앨범 이미지",
+                    modifier = Modifier.size(100.dp)
                 )
             }
-            Column {
+            Spacer(Modifier.width(10.dp))
+            Column(
+                Modifier.fillMaxHeight(),
+                verticalArrangement = Arrangement.SpaceAround,
+            ) {
                 Text(
                     text = "사랑에 연습이 있었다면",
                     fontSize = 25.sp,
